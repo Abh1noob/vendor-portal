@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
@@ -14,7 +15,19 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <div className="">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            storageKey="your-storage-key-theme"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </div>
+      </body>
     </html>
   );
 }
